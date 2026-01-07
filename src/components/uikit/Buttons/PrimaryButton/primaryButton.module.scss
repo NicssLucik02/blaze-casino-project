@@ -1,15 +1,16 @@
 @import '../../../../styles//mixins/mixins';
 
-.primary-button {
+.primaryButton {
   height: 46px;
   border-radius: 100px;
   font-size: 16px;
   font-weight: 600;
-  background: linear-gradient(to bottom, var(--gradient-primary-button));
+  background: linear-gradient(to bottom, var(--gradient-coral));
   color: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 
   &:hover {
     @include shadow-blur(var(--primary-button-hover), 18px);
@@ -18,9 +19,15 @@
   &:active {
     background: linear-gradient(to bottom, var(--primary-button-pressed));
   }
-}
 
-.primary-button:disabled {
-  background: linear-gradient(to bottom, var(--primary-button-disabled));
-  cursor: not-allowed;
+  &:disabled {
+    background: linear-gradient(to bottom, var(--primary-button-disabled));
+    cursor: not-allowed;
+  }
+
+  &Icon {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+  }
 }

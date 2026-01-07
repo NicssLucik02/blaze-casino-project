@@ -1,15 +1,25 @@
+@import './media.scss';
+
 @mixin h1-satoshi {
   font-size: 32px;
   font-weight: 900;
   line-height: 130%;
   font-family: var(--font-satoshi), sans-serif;
+
+  @include mobile-large {
+    font-size: 24px;
+  }
 }
 
-@mixin h2-inter {
-  font-size: 18px;
+@mixin h2-inter($fs: 18px) {
+  font-size: $fs;
   font-weight: 600;
   line-height: 120%;
   font-family: var(--font-inter), sans-serif;
+
+  @include mobile-large {
+    font-size: 16px;
+  }
 }
 
 @mixin main-text {
