@@ -15,7 +15,6 @@ type Props = {
 export const PrimaryInput: React.FC<Props> = ({
   placeholderValue,
   type,
-  bgColor = COLORS.BACKGROUND_CARD,
   widthSize,
   inputValue,
   handler,
@@ -35,7 +34,6 @@ export const PrimaryInput: React.FC<Props> = ({
       disabled={isDisabled}
       style={{
         width: `${widthSize}%`,
-        backgroundColor: `${bgColor}`,
       }}
     />
   );
