@@ -1,0 +1,26 @@
+@import '../../../../styles//mixins/mixins';
+
+.secondary-button {
+  height: 48px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(to bottom, var(--gradient-secondary-button));
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    @include shadow-blur(var(--secondary-button-hover), 18px);
+  }
+
+  &:active {
+    background: linear-gradient(to bottom, var(--secondary-button-pressed));
+  }
+
+  &:disabled {
+    background: linear-gradient(to bottom, var(--secondary-button-disabled));
+    cursor: not-allowed;
+  }
+}

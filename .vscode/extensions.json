@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "EditorConfig.EditorConfig",
+    "dsznajder.es7-react-js-snippets",
+    "christian-kohler.path-intellisense",
+    "usernamehw.errorlens",
+    "MS-vsliveshare.vsliveshare"
+  ],
+  "unwantedRecommendations": []
+}
