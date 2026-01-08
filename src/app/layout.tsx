@@ -1,5 +1,6 @@
 import '@/styles/globals.scss';
 import { inter, satoshi } from '@/styles/fonts';
+import { QueryProvider } from './providers/queryProvider';
 
 export default function RootLayout({
   children,
@@ -9,7 +10,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${satoshi.variable}`}>
-        {children}
+        <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
   );

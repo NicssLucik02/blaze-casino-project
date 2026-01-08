@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  transition: all 0.5s ease;
 
   &:hover {
     @include shadow-blur(var(--primary-button-hover), 18px);
