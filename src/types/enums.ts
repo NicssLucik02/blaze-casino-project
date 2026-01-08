@@ -13,5 +13,5 @@ export const enum ButtonTypes {
 export enum AppRoutes {
   LOGIN = '/login',
   SIGNUP = '/signup',
-  DASHBOARD = '/dashboard',
+  DASHBOARD = '/',
 }

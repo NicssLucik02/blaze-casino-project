@@ -5,6 +5,7 @@ import { useCallback } from 'react';
 type Props = {
   amount?: number;
   content: string;
+  icon?: React.ReactNode;
   widthSize: string;
   handler: (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -17,6 +18,7 @@ type Props = {
 export const SecondaryButton: React.FC<Props> = ({
   amount,
   content,
+  icon,
   widthSize,
   handler,
   disabled,
@@ -31,7 +33,7 @@ export const SecondaryButton: React.FC<Props> = ({
       disabled={disabled}
       onClick={handleClick}
       className={classNames(
-        styles['secondary-button'],
+        styles['secondaryButton'],
 
         { [styles['active']]: isActive }
       )}
@@ -40,6 +42,7 @@ export const SecondaryButton: React.FC<Props> = ({
       }}
     >
       {content || amount}
+      {icon && <span className={styles['secondaryButtonIcon']}>{icon}</span>}
     </button>
   );
 };

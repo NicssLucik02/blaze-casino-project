@@ -1,22 +1,40 @@
 import { z } from 'zod';
+import { VALIDATION, VALIDATION_MESSAGES } from '@/config/constants';
 
 export const loginSchema = z.object({
-  email: z.string().min(1, 'Email is required').email('Invalid email address'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
+  email: z
+    .string()
+    .min(VALIDATION.EMAIL.MIN, VALIDATION_MESSAGES.EMAIL.REQUIRED)
+    .email(VALIDATION_MESSAGES.EMAIL.INVALID),
+  password: z
+    .string()
+    .min(VALIDATION.PASSWORD.MIN_LOGIN, VALIDATION_MESSAGES.PASSWORD.MIN_LOGIN),
 });
 
 export const signupSchema = z.object({
   username: z
     .string()
-    .min(3, 'Username must be at least 3 characters')
-    .max(20, 'Username must be less than 20 characters')
-    .regex(/^[a-zA-Z0-9_]+$/, 'Only letters, numbers and underscore allowed'),
-  email: z.string().min(1, 'Email is required').email('Invalid email address'),
+    .min(VALIDATION.USERNAME.MIN, VALIDATION_MESSAGES.USERNAME.MIN)
+    .max(VALIDATION.USERNAME.MAX, VALIDATION_MESSAGES.USERNAME.MAX)
+    .regex(VALIDATION.USERNAME.PATTERN, VALIDATION_MESSAGES.USERNAME.PATTERN),
+  email: z
+    .string()
+    .min(VALIDATION.EMAIL.MIN, VALIDATION_MESSAGES.EMAIL.REQUIRED)
+    .email(VALIDATION_MESSAGES.EMAIL.INVALID),
   password: z
     .string()
-    .min(8, 'Password must be at least 8 characters')
-    .regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
-    .regex(/[0-9]/, 'Password must contain at least one number'),
+    .min(
+      VALIDATION.PASSWORD.MIN_SIGNUP,
+      VALIDATION_MESSAGES.PASSWORD.MIN_SIGNUP
+    )
+    .regex(
+      VALIDATION.PASSWORD.REQUIRES_UPPERCASE,
+      VALIDATION_MESSAGES.PASSWORD.REQUIRES_UPPERCASE
+    )
+    .regex(
+      VALIDATION.PASSWORD.REQUIRES_NUMBER,
+      VALIDATION_MESSAGES.PASSWORD.REQUIRES_NUMBER
+    ),
 });
 
 export type LoginFormData = z.infer<typeof loginSchema>;

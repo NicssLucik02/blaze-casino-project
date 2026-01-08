@@ -9,6 +9,10 @@
   padding-left: 10px;
   @include secondary-text;
 
+  &:focus {
+    background-color: var(--color-white);
+  }
+
   &Container {
     display: flex;
     align-items: center;
@@ -21,12 +25,4 @@
   &Icon {
     margin-right: 10px;
   }
-}
-
-.error {
-  display: block;
-  margin-top: 4px;
-  font-size: 12px;
-  color: var(--color-red-error);
-  line-height: 1.4;
 }

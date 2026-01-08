@@ -1,11 +1,9 @@
-import { AppRoutes } from '@/types/enums';
-import { redirect } from 'next/navigation';
+import { Dashboard } from '@/components/Dashboard/Dashboard';
 
-export default function Dashboard() {
-  redirect(AppRoutes.LOGIN);
+export default function DashboardPage() {
   return (
-    <div>
-      <main></main>
-    </div>
+    <main>
+      <Dashboard />
+    </main>
   );
 }

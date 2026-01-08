@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styles from './auth.module.scss';
 import { AuthForm } from './AuthForm/AuthForm';
 import { AuthBottom } from './AuthBottom';
+import { UI_MESSAGES } from '@/config/constants';
 
 export const AuthModal = () => {
   return (
@@ -12,15 +13,20 @@ export const AuthModal = () => {
             <div className={styles['authTopLogo']}>
               <Image
                 src="/icons/logo.svg"
-                alt="Blaze Casino Logo"
+                alt={UI_MESSAGES.AUTH_MODAL.LOGO_ALT}
+                className={styles['authTopLogoIcon']}
                 width={40}
                 height={40}
               />
             </div>
 
             <div className={styles['authTopText']}>
-              <h1 className={styles['authTopTitle']}>Blaze Casino</h1>
-              <h2 className={styles['authTopSubtitle']}>Welcome back!</h2>
+              <h1 className={styles['authTopTitle']}>
+                {UI_MESSAGES.AUTH_MODAL.TITLE}
+              </h1>
+              <h2 className={styles['authTopSubtitle']}>
+                {UI_MESSAGES.AUTH_MODAL.SUBTITLE}
+              </h2>
             </div>
           </div>
 

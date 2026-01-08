@@ -62,7 +62,7 @@ export const AuthInput = forwardRef<HTMLInputElement, Props>(
             </div>
           )}
         </div>
-        {!hideError && error && <span className={styles.error}>{error}</span>}
+        {!hideError && error && <span className="error">{error}</span>}
       </>
     );
   }

@@ -2,7 +2,7 @@
 import { usePathname } from 'next/navigation';
 import styles from './auth.module.scss';
 import Link from 'next/link';
-import { AppRoutes } from '@/types/enums';
+import { ROUTES, UI_MESSAGES } from '@/config/constants';
 
 export const AuthBottom = () => {
   const pathname = usePathname();
@@ -10,20 +10,18 @@ export const AuthBottom = () => {
   return (
     <div className={styles['authBottom']}>
       <Link
-        href={
-          pathname === AppRoutes.SIGNUP ? AppRoutes.LOGIN : AppRoutes.SIGNUP
-        }
+        href={pathname === ROUTES.SIGNUP ? ROUTES.LOGIN : ROUTES.SIGNUP}
         className={styles['authBottomLink']}
       >
-        {pathname === AppRoutes.SIGNUP
-          ? 'Already have an account? Login'
-          : `Don't have an account? Register`}
+        {pathname === ROUTES.SIGNUP
+          ? UI_MESSAGES.AUTH_BOTTOM.ALREADY_HAVE_ACCOUNT
+          : UI_MESSAGES.AUTH_BOTTOM.NO_ACCOUNT}
       </Link>
 
       <div className={styles['authBottomDivider']} />
 
       <p className={styles['authBottomText']}>
-        Your account data is stored locally in your browser
+        {UI_MESSAGES.AUTH_BOTTOM.DATA_STORAGE}
       </p>
     </div>
   );

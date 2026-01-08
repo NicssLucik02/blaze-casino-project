@@ -1,6 +1,6 @@
 @import '../../../../styles//mixins/mixins';
 
-.secondary-button {
+.secondaryButton {
   height: 48px;
   border-radius: 16px;
   font-size: 16px;
@@ -10,6 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.5s ease;
 
   &:hover {
     @include shadow-blur(var(--secondary-button-hover), 18px);
@@ -22,5 +23,11 @@
   &:disabled {
     background: linear-gradient(to bottom, var(--secondary-button-disabled));
     cursor: not-allowed;
+  }
+
+  &Icon {
+    position: absolute;
+    right: 12px;
+    top: 10px;
   }
 }
