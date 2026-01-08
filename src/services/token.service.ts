@@ -1,64 +1,70 @@
 import { STORAGE_KEYS, TOKEN_CONFIG } from '@/config/constants';
 import Cookies from 'js-cookie';
 
-export const tokenStorage = {
-  setAccessToken: (token: string) => {
+class TokenStorageService {
+  setAccessToken(token: string): void {
     Cookies.set(STORAGE_KEYS.ACCESS_TOKEN, token, {
       expires: TOKEN_CONFIG.ACCESS_TOKEN_EXPIRES,
       secure: TOKEN_CONFIG.COOKIE_SECURE,
       sameSite: TOKEN_CONFIG.COOKIE_SAME_SITE,
     });
-  },
+  }
 
-  getAccessToken: (): string | undefined => {
+  getAccessToken(): string | undefined {
     return Cookies.get(STORAGE_KEYS.ACCESS_TOKEN);
-  },
+  }
 
-  removeAccessToken: () => {
+  private removeAccessToken(): void {
     Cookies.remove(STORAGE_KEYS.ACCESS_TOKEN);
-  },
+  }
 
-  setRefreshToken: (token: string) => {
+  setRefreshToken(token: string): void {
     Cookies.set(STORAGE_KEYS.REFRESH_TOKEN, token, {
       expires: TOKEN_CONFIG.REFRESH_TOKEN_EXPIRES,
       secure: TOKEN_CONFIG.COOKIE_SECURE,
       sameSite: TOKEN_CONFIG.COOKIE_SAME_SITE,
     });
-  },
+  }
 
-  getRefreshToken: (): string | undefined => {
+  getRefreshToken(): string | undefined {
     return Cookies.get(STORAGE_KEYS.REFRESH_TOKEN);
-  },
+  }
 
-  removeRefreshToken: () => {
+  private removeRefreshToken(): void {
     Cookies.remove(STORAGE_KEYS.REFRESH_TOKEN);
-  },
+  }
 
-  setUserInfo: (userId: string, userName: string) => {
+  setUserInfo(userId: string, userName: string): void {
     Cookies.set(STORAGE_KEYS.USER_ID, userId, {
       expires: TOKEN_CONFIG.USER_INFO_EXPIRES,
     });
     Cookies.set(STORAGE_KEYS.USER_NAME, userName, {
       expires: TOKEN_CONFIG.USER_INFO_EXPIRES,
     });
-  },
+  }
 
-  getUserId: (): string | undefined => {
+  getUserId(): string | undefined {
     return Cookies.get(STORAGE_KEYS.USER_ID);
-  },
+  }
 
-  getUserName: (): string | undefined => {
+  getUserName(): string | undefined {
     return Cookies.get(STORAGE_KEYS.USER_NAME);
-  },
+  }
 
-  removeUserInfo: () => {
+  private removeUserInfo(): void {
     Cookies.remove(STORAGE_KEYS.USER_ID);
     Cookies.remove(STORAGE_KEYS.USER_NAME);
-  },
+  }
 
-  clearAll: () => {
-    tokenStorage.removeAccessToken();
-    tokenStorage.removeRefreshToken();
-    tokenStorage.removeUserInfo();
-  },
-};
+  clearAll(): void {
+    this.removeAccessToken();
+    this.removeRefreshToken();
+    this.removeUserInfo();
+  }
+
+  isAuthenticated(): boolean {
+    return !!this.getAccessToken();
+  }
+}
+
+export const tokenStorage = new TokenStorageService();

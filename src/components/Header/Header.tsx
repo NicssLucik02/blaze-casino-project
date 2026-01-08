@@ -3,9 +3,10 @@
 import { SecondaryButton } from '../uikit/Buttons/SecondaryButton/SecondaryButton';
 import styles from './header.module.scss';
 import LogoutIcon from '../../../public/icons/logout.svg';
-import { useLogout } from '@/hooks/useAuth';
+
 import { ClipLoader } from 'react-spinners';
 import { UI_MESSAGES } from '@/config/constants';
+import { useLogout } from '@/hooks/useAuth';
 
 export const Header = () => {
   const logoutMutation = useLogout();
