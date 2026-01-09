@@ -1,7 +1,7 @@
 @import './media.scss';
 
-@mixin h1-satoshi {
-  font-size: 32px;
+@mixin h1-satoshi($fs: 32px) {
+  font-size: $fs;
   font-weight: 900;
   line-height: 130%;
   font-family: var(--font-satoshi), sans-serif;

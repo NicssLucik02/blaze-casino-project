@@ -105,34 +105,4 @@
       margin-top: 32px;
     }
   }
-
-  &Bottom {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    width: 100%;
-
-    &Link {
-      @include secondary-text;
-      text-decoration: none;
-      color: var(--color-light-blue);
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-
-    &Divider {
-      width: 100%;
-      height: 1px;
-      background-color: var(--color-grey);
-    }
-
-    &Text {
-      @include small-text;
-      color: var(--color-grey);
-    }
-  }
 }

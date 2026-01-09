@@ -58,7 +58,7 @@ export const SignupForm = () => {
               ? UI_MESSAGES.BUTTONS.SIGNUP_LOADING
               : UI_MESSAGES.BUTTONS.SIGNUP
           }
-          widthSize="100"
+          widthSize="100%"
           icon={<LoginIcon />}
           type={ButtonTypes.SUBMIT}
           disabled={isLoading}

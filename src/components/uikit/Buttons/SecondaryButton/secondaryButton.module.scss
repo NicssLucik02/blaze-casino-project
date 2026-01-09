@@ -5,7 +5,7 @@
   border-radius: 16px;
   font-size: 16px;
   font-weight: 600;
-  background: linear-gradient(to bottom, var(--gradient-secondary-button));
+  background: linear-gradient(to bottom, var(--gradient-accent));
   color: var(--color-white);
   display: flex;
   align-items: center;
@@ -26,8 +26,6 @@
   }
 
   &Icon {
-    position: absolute;
-    right: 12px;
-    top: 10px;
+    cursor: pointer;
   }
 }

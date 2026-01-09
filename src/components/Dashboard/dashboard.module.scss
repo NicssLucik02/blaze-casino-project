@@ -1,0 +1,13 @@
+@import '../../styles/mixins/mixins';
+
+.dashboard {
+  padding-top: 40px;
+  width: 100%;
+  height: 100vh;
+
+  &Container {
+    @include inline-padding;
+    display: flex;
+    gap: 93px;
+  }
+}

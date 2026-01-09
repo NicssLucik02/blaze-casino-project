@@ -1,6 +1,6 @@
 'use client';
 import { usePathname } from 'next/navigation';
-import styles from './auth.module.scss';
+import styles from './authBottom.module.scss';
 import Link from 'next/link';
 import { ROUTES, UI_MESSAGES } from '@/config/constants';
 

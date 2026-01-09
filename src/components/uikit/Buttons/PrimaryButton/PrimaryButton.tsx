@@ -25,7 +25,7 @@ export const PrimaryButton: React.FC<Props> = ({
       className={styles['primaryButton']}
       type={type}
       style={{
-        width: `${widthSize}%`,
+        width: `${widthSize}`,
       }}
     >
       {content}

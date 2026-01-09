@@ -38,7 +38,7 @@ export const SecondaryButton: React.FC<Props> = ({
         { [styles['active']]: isActive }
       )}
       style={{
-        width: `${widthSize}%`,
+        width: `${widthSize}`,
       }}
     >
       {content || amount}

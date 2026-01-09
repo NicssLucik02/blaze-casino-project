@@ -1,8 +1,19 @@
+@import '../../styles/mixins/mixins';
+@import '../../styles/mixins/media';
+
 .header {
+  position: sticky;
+  top: 0;
   width: 100%;
   height: 100px;
   background: linear-gradient(to bottom, var(--gradient-header-background));
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  @include inline-padding;
+  z-index: 5;
+
+  @include tablet {
+    background: none;
+  }
 }
