@@ -17,6 +17,14 @@ export function middleware(request: NextRequest) {
 
   const isAuthRoute = AUTH_ROUTES.includes(pathname as any);
 
+  if (pathname === '/') {
+    if (token) {
+      return NextResponse.redirect(new URL(ROUTES.DASHBOARD, request.url));
+    } else {
+      return NextResponse.redirect(new URL(ROUTES.LOGIN, request.url));
+    }
+  }
+
   if (isProtectedRoute && !token) {
     return NextResponse.redirect(new URL(ROUTES.LOGIN, request.url));
   }
@@ -29,5 +37,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/profile/:path*', '/login', '/signup'],
+  matcher: ['/', '/dashboard/:path*', '/profile/:path*', '/login', '/signup'],
 };
