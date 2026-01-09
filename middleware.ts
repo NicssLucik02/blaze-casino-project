@@ -11,26 +11,44 @@ export function middleware(request: NextRequest) {
   const token = request.cookies.get(STORAGE_KEYS.ACCESS_TOKEN)?.value;
   const { pathname } = request.nextUrl;
 
+  console.log('[Middleware] pathname:', pathname, 'token:', !!token);
+
+  if (
+    pathname.startsWith('/_next') ||
+    pathname.startsWith('/static') ||
+    pathname.includes('.')
+  ) {
+    return NextResponse.next();
+  }
+
   const isProtectedRoute = PROTECTED_ROUTES.some(route =>
     pathname.startsWith(route)
   );
-
   const isAuthRoute = AUTH_ROUTES.includes(pathname as any);
 
   if (pathname === '/') {
-    if (token) {
-      return NextResponse.redirect(new URL(ROUTES.DASHBOARD, request.url));
-    } else {
-      return NextResponse.redirect(new URL(ROUTES.LOGIN, request.url));
+    const redirectUrl = token ? ROUTES.DASHBOARD : ROUTES.LOGIN;
+    console.log('[Middleware] Root → redirect to:', redirectUrl);
+
+    if (pathname !== redirectUrl) {
+      return NextResponse.redirect(new URL(redirectUrl, request.url));
     }
   }
 
   if (isProtectedRoute && !token) {
-    return NextResponse.redirect(new URL(ROUTES.LOGIN, request.url));
+    console.log('[Middleware] Protected route, no token → /login');
+
+    if (pathname !== ROUTES.LOGIN) {
+      return NextResponse.redirect(new URL(ROUTES.LOGIN, request.url));
+    }
   }
 
   if (isAuthRoute && token) {
-    return NextResponse.redirect(new URL(ROUTES.DASHBOARD, request.url));
+    console.log('[Middleware] Auth route with token → /dashboard');
+
+    if (pathname !== ROUTES.DASHBOARD) {
+      return NextResponse.redirect(new URL(ROUTES.DASHBOARD, request.url));
+    }
   }
 
   return NextResponse.next();
