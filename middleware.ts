@@ -1,5 +1,4 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/request';
+import { NextResponse, type NextRequest } from 'next/server';
 import { STORAGE_KEYS, ROUTES } from '@/config/constants';
 
 export function middleware(request: NextRequest) {
