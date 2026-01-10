@@ -45,7 +45,7 @@ export const LoginForm = () => {
       <div className={styles['authFormButton']}>
         <PrimaryButton
           content={UI_MESSAGES.BUTTONS.LOGIN}
-          widthSize="100"
+          widthSize="100%"
           icon={isLoading ? <ClipLoader /> : <LoginIcon />}
           type={ButtonTypes.SUBMIT}
           disabled={isLoading}

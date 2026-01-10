@@ -1,3 +1,17 @@
+@import './media';
+
 @mixin shadow-blur($color, $blur, $spread: 0) {
   box-shadow: 0 0 $blur $spread $color;
+}
+
+@mixin drop-shadow-blur($color, $blur) {
+  filter: drop-shadow(0 0 $blur $color);
+}
+
+@mixin inline-padding {
+  padding-inline: 48px;
+
+  @include mobile-large {
+    padding-inline: 16px;
+  }
 }

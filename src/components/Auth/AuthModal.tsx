@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styles from './auth.module.scss';
 import { AuthForm } from './AuthForm/AuthForm';
-import { AuthBottom } from './AuthBottom';
+import { AuthBottom } from './AuthBottom/AuthBottom';
 import { UI_MESSAGES } from '@/config/constants';
 
 export const AuthModal = () => {
