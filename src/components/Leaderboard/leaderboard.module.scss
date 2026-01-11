@@ -1,0 +1,80 @@
+@import '../../styles/mixins/fonts';
+
+.leaderboard {
+  width: 300px;
+  height: auto;
+  border-radius: 16px;
+  background-color: var(--color-dark-violet);
+
+  &Container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 16px;
+    gap: 24px;
+  }
+
+  &Top {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  &Title {
+    @include h1-satoshi(24px);
+  }
+
+  &Subtitle {
+    color: var(--color-grey);
+    @include main-text;
+  }
+
+  &CupIcon {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: -24px;
+    left: -30px;
+    filter: drop-shadow(0 4 14px rgba(255, 205, 113, 0.8))
+      drop-shadow(0 4 14px rgba(255, 205, 113, 0.5));
+  }
+
+  &List {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 8px;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--color-grey);
+      border-radius: 3px;
+
+      &:hover {
+        background: var(--color-white);
+      }
+    }
+  }
+}
+
+.active {
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background:
+    linear-gradient(var(--color-dark-blue2), var(--color-dark-blue2))
+      padding-box,
+    linear-gradient(to right, var(--gradient-accent)) border-box;
+}

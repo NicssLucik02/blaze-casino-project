@@ -26,7 +26,7 @@ export const HeaderMain = () => {
         />
         <div className={styles['headerMainBalance']}>
           <Image src={coinIcon} alt="coin" width={24} height={24} />
-          <span>10.000</span>
+          <span>10,000.00</span>
         </div>
         <Image src={userAvatar} alt="avatar" width={32} height={32} />
       </div>
