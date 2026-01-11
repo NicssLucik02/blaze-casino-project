@@ -11,7 +11,7 @@
 @mixin inline-padding {
   padding-inline: 48px;
 
-  @include mobile-large {
+  @include laptop {
     padding-inline: 16px;
   }
 }

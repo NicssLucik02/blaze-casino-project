@@ -4,12 +4,13 @@ import { useState } from 'react';
 import styles from './burgerMenu.module.scss';
 import BurgerIcon from '../../../public/icons/burger.svg';
 import CloseIcon from '../../../public/icons/close.svg';
-import Logo from '../../../public/icons/logo.svg';
 import Settings from '../../../public/icons/settings.svg';
 import LoginIcon from '../../../public/icons/login.svg';
+import InventoryIcon from '../../../public/icons/inventory.svg';
 import { SecondaryButton } from '../uikit/Buttons/SecondaryButton/SecondaryButton';
 import { UI_MESSAGES } from '@/config/constants';
 import { ClipLoader } from 'react-spinners';
+import { BlazeLogo } from '../Header/HeaderLogo/BlazeLogo';
 
 type Props = {
   logoutAction: () => void;
@@ -35,7 +36,11 @@ export const BurgerMenu: React.FC<Props> = ({ logoutAction, isLoggingOut }) => {
         onClick={toggleMenu}
         aria-label="Toggle menu"
       >
-        {isOpen ? <CloseIcon /> : <BurgerIcon />}
+        {isOpen ? (
+          <CloseIcon className={styles['closeIcon']} />
+        ) : (
+          <BurgerIcon />
+        )}
       </button>
 
       {isOpen && (
@@ -44,23 +49,33 @@ export const BurgerMenu: React.FC<Props> = ({ logoutAction, isLoggingOut }) => {
             <div className={styles['menuHeader']}>
               <h2 className={styles['menuLogo']}>
                 <span>Blaze</span>
-                <Logo size={40} />
+                <BlazeLogo
+                  width={40}
+                  height={40}
+                  gradientId="burgerMenuGradient"
+                />
                 <span>Casino</span>
               </h2>
             </div>
 
             <div className={styles['menuContent']}>
-              <button className={styles['menuItem']}>
+              <div className={styles['menuItem']}>
                 <Settings />
                 <span>Settings</span>
-              </button>
+              </div>
 
-              <SecondaryButton
-                content={UI_MESSAGES.BUTTONS.LOGOUT}
-                widthSize="100%"
-                handler={handleLogout}
-                icon={isLoggingOut ? <ClipLoader /> : <LoginIcon />}
-              />
+              <div className={styles['menuItem']}>
+                <InventoryIcon width={20} height={20} />
+                <span>Inventory</span>
+              </div>
+              <div className={styles['menuLogoutContainer']}>
+                <SecondaryButton
+                  content={UI_MESSAGES.BUTTONS.LOGOUT}
+                  widthSize="100%"
+                  handler={handleLogout}
+                  icon={isLoggingOut ? <ClipLoader /> : <LoginIcon />}
+                />
+              </div>
             </div>
           </div>
         </div>

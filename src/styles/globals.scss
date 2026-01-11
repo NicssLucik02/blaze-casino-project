@@ -6,6 +6,7 @@
   --color-green-success: rgba(130, 201, 30, 1);
   --color-dark-blue: rgba(16, 15, 34, 1);
   --color-dark-blue2: rgba(36, 36, 63, 1);
+  --color-dark-blue3: rgba(15, 12, 41, 1);
   --color-purple: rgba(127, 118, 205, 1);
   --color-dark-violet: rgba(66, 62, 105, 1);
   --color-card: rgba(66, 62, 105, 0.5);
@@ -13,9 +14,10 @@
   --color-light-blue: rgba(81, 162, 255, 1);
 
   --gradient-main-background:
-    rgba(15, 12, 41, 1), rgba(49, 44, 95, 1), rgba(36, 36, 62, 1);
+    var(--color-dark-blue3), rgba(49, 44, 95, 1), rgba(36, 36, 62, 1);
   --gradient-header-background:
-    rgba(15, 12, 41, 1), rgba(49, 44, 95, 1), rgba(36, 36, 62, 1);
+    var(--color-dark-blue3), rgba(49, 44, 95, 1), rgba(36, 36, 62, 1);
+  --gradient-green: rgba(185, 255, 88, 1), rgba(105, 180, 0, 1);
   --gradient-coral: rgba(255, 0, 71, 1), rgba(255, 65, 123, 1);
   --primary-button-disabled: rgba(255, 104, 146, 1), rgba(255, 155, 185, 1);
   --primary-button-hover: rgba(255, 90, 140, 1);

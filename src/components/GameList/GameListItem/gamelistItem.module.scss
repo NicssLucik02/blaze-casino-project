@@ -1,0 +1,147 @@
+@import '../../../styles//mixins/fonts';
+@import '../../../styles//mixins/mixins';
+@import '../../../styles//mixins/media';
+
+.gameListItem {
+  width: 100%;
+  min-height: 360px;
+  border-radius: 24px;
+  gap: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  @include shadow-blur(rgba(255, 255, 255, 0.3), 100px, 1px);
+
+  @include tablet {
+    min-height: 280px;
+    gap: 24px;
+  }
+
+  @include mobile-large {
+    min-height: 240px;
+    gap: 16px;
+    border-radius: 16px;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &Wrapper {
+    width: 100%;
+    list-style: none;
+  }
+
+  &Background {
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(138, 56, 245, 0.2),
+      rgba(18, 0, 42, 0.3)
+    );
+    border-radius: 24px;
+    pointer-events: none;
+    z-index: 1;
+
+    @include mobile-large {
+      border-radius: 16px;
+    }
+  }
+
+  &Label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    padding-inline: 16px;
+    height: 29px;
+    border-radius: 1000px;
+    z-index: 2;
+    top: 24px;
+    left: 24px;
+    background: linear-gradient(var(--gradient-green));
+    @include shadow-blur(rgba(167, 232, 77, 1), 16px);
+    @include h2-inter(16px);
+
+    @include mobile-large {
+      top: 16px;
+      left: 16px;
+      height: 24px;
+      padding-inline: 12px;
+      font-size: 14px;
+    }
+  }
+
+  &Title {
+    @include h1-satoshi;
+    z-index: 2;
+
+    @include tablet {
+      font-size: 28px;
+    }
+
+    @include mobile-large {
+      font-size: 24px;
+    }
+  }
+
+  &Description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 2;
+    margin-top: 160px;
+
+    @include tablet {
+      margin-top: 100px;
+    }
+
+    @include mobile-large {
+      margin-top: 80px;
+    }
+  }
+
+  &Text {
+    @include secondary-text;
+    max-width: 216px;
+    z-index: 2;
+
+    @include tablet {
+      max-width: 180px;
+      font-size: 14px;
+    }
+
+    @include mobile-large {
+      max-width: 150px;
+      font-size: 12px;
+    }
+  }
+
+  &Button {
+    width: 50%;
+    z-index: 2;
+    text-decoration: none;
+
+    @include mobile-large {
+      width: 70%;
+    }
+  }
+}
