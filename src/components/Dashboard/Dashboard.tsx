@@ -1,3 +1,4 @@
+import { GameList } from '../GameList/GameList';
 import { Leaderboard } from '../Leaderboard/Leaderboard';
 import styles from './dashboard.module.scss';
 
@@ -6,6 +7,7 @@ export const Dashboard = () => {
     <section className={styles['dashboard']}>
       <div className={styles['dashboardContainer']}>
         <Leaderboard />
+        <GameList />
       </div>
     </section>
   );

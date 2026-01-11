@@ -1,10 +1,15 @@
 @import '../../styles/mixins/fonts';
+@import '../../styles/mixins/media';
 
 .leaderboard {
   width: 300px;
   height: auto;
   border-radius: 16px;
   background-color: var(--color-dark-violet);
+
+  @include tablet {
+    width: 100%;
+  }
 
   &Container {
     display: flex;

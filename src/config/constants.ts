@@ -94,7 +94,7 @@ export const UI_MESSAGES = {
     LOGIN: 'Log In',
     SIGNUP: 'Sign Up',
     SIGNUP_LOADING: 'Creating account...',
-    LOGOUT: 'Logout',
+    LOGOUT: 'Log Out',
   },
   AUTH_BOTTOM: {
     ALREADY_HAVE_ACCOUNT: 'Already have an account? Login',

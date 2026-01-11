@@ -1,10 +1,11 @@
 @import '../../../../styles//mixins/mixins';
 
 .secondaryButton {
-  height: 48px;
+  height: 46px;
   border-radius: 16px;
   font-size: 16px;
   font-weight: 600;
+  gap: 4px;
   background: linear-gradient(to bottom, var(--gradient-accent));
   color: var(--color-white);
   display: flex;
@@ -26,6 +27,8 @@
   }
 
   &Icon {
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
