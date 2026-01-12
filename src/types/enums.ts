@@ -14,4 +14,12 @@ export enum AppRoutes {
   LOGIN = '/login',
   SIGNUP = '/signup',
   DASHBOARD = '/',
+  GAMES = '/games',
+}
+
+export const enum GamesTypes {
+  CRASH = 'crash',
+  CASES = 'cases',
+  MINES = 'mines',
+  PLINKO = 'plinko',
 }

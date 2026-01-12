@@ -1,3 +1,4 @@
+'use client';
 import classNames from 'classnames';
 import styles from './secondaryButton.module.scss';
 import { useCallback } from 'react';

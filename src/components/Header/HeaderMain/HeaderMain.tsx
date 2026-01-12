@@ -2,7 +2,8 @@
 import { UI_MESSAGES } from '@/config/constants';
 import styles from './headerMain.module.scss';
 import { ClipLoader } from 'react-spinners';
-import { LogInIcon, Settings } from 'lucide-react';
+import { Settings } from 'lucide-react';
+import LogoutIcon from '../../../../public/icons/login.svg';
 import { BurgerMenu } from '@/components/BurgerMenu/BurgerMenu';
 import Image from 'next/image';
 import { SecondaryButton } from '@/components/uikit/Buttons/SecondaryButton/SecondaryButton';
@@ -36,7 +37,7 @@ export const HeaderMain = () => {
           content={UI_MESSAGES.BUTTONS.LOGOUT}
           widthSize="118px"
           handler={handleLogout}
-          icon={logoutMutation.isPending ? <ClipLoader /> : <LogInIcon />}
+          icon={logoutMutation.isPending ? <ClipLoader /> : <LogoutIcon />}
         />
       </div>
     </div>
