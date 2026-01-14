@@ -9,6 +9,7 @@ import {
   UI_MESSAGES,
   LOGGER_CONFIG,
 } from '@/config/constants';
+import { socketService } from './socket.service';
 
 type AuthSuccessResponse = {
   accessToken: string;
@@ -35,6 +36,7 @@ class AuthFlowService {
     queryClient: QueryClient,
     router: AppRouterInstance
   ): void {
+    socketService.disconnect();
     tokenStorage.clearAll();
     queryClient.clear();
     router.push(ROUTES.LOGIN);

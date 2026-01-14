@@ -1,7 +1,7 @@
 import rocketGameImage from '@/assets/images/rocketgame.jpg';
 import CaseGameImage from '@/assets/images/case-game.png';
 import MinesGameImage from '@/assets/images/mines-game.png';
-import PlinkoGameImage from '@/assets/images/plinko-game.png';
+import PlinkoGameImage from '@/assets/images/plinko-game.jpg';
 import { GamesTypes } from '@/types/enums';
 import { GameCardInfo } from '@/types/games';
 

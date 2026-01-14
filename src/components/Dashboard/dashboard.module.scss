@@ -5,11 +5,17 @@
   padding-top: 40px;
   width: 100%;
   height: 100vh;
+  overflow: visible;
 
   &Container {
     @include inline-padding;
     display: flex;
     gap: 93px;
+    overflow: visible;
+
+    @include desktop {
+      gap: 50px;
+    }
 
     @include laptop {
       gap: 20px;
