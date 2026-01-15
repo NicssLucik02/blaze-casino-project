@@ -57,7 +57,6 @@ export const VirtualizedMessageList = ({
                 username={message.username}
                 text={message.text}
                 time={message.time}
-                userId={message._id}
                 avatarURL={message.avatarURL}
               />
             </div>
