@@ -1,6 +1,7 @@
-import { ArrowUp } from 'lucide-react';
+import ArrowUp from 'lucide-react/dist/esm/icons/arrow-up';
 import styles from './messageBar.module.scss';
 import { useMessageInput } from '@/hooks/Chat/useMessageInput';
+import { MessageInput } from '@/components/uikit/MessageInput/MessageInput';
 
 export const MessageBar = () => {
   const {
@@ -10,16 +11,17 @@ export const MessageBar = () => {
     handleSendMessage,
     handleChangeMessage,
   } = useMessageInput();
+
   return (
     <div className={styles['messageBar']}>
-      <input
-        type="text"
-        className={styles['messageBarInput']}
-        placeholder="Write a message..."
-        value={inputMessage}
-        onChange={event => handleChangeMessage(event.target.value)}
-        disabled={!isConnected || isSending}
+      <MessageInput
+        inputMessage={inputMessage}
+        isSending={isSending}
+        isConnected={isConnected}
+        handleChangeMessage={handleChangeMessage}
+        handleSendMessage={handleSendMessage}
       />
+
       <button
         className={styles['messageBarButton']}
         onClick={handleSendMessage}

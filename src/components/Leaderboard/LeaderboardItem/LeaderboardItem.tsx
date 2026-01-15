@@ -4,7 +4,7 @@ import coinIcon from '../../../../public/icons/coin.png';
 import Image from 'next/image';
 import classNames from 'classnames';
 
-type Props = {
+type LeaderboardItemProps = {
   rank: string;
   username: string;
   balance: string;
@@ -13,7 +13,7 @@ type Props = {
   isCurrentUser?: boolean;
 };
 
-export const LeaderboardItem: React.FC<Props> = ({
+export const LeaderboardItem: React.FC<LeaderboardItemProps> = ({
   rank,
   username,
   balance,

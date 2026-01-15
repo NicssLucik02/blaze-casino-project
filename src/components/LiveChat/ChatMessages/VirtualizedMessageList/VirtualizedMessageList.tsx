@@ -1,20 +1,18 @@
 'use no memo';
 
 import { ChatMessage as ChatMessageType } from '@/types/chat';
-import { ChatMessage } from '../ChatMessage/ChatMessage';
+import { ChatMessage } from '../../ChatMessage/ChatMessage';
 import { useChatVirtualizer } from '@/hooks/Chat/useChatVirtualizer';
 import { useChatScroll } from '@/hooks/Chat/useChatAutoscroll';
+import { CHAT_CONFIG } from '@/config/constants';
+import styles from './virtualizedMessageList.module.scss';
 
 interface VirtualizedMessageListProps {
   messages: ChatMessageType[];
-  estimateSize?: number;
-  overscan?: number;
 }
 
 export const VirtualizedMessageList = ({
   messages,
-  estimateSize = 166,
-  overscan = 30,
 }: VirtualizedMessageListProps) => {
   const { scrollContainerRef } = useChatScroll({
     messagesCount: messages.length,
@@ -23,8 +21,8 @@ export const VirtualizedMessageList = ({
 
   const { virtualItems, totalSize, rowVirtualizer } = useChatVirtualizer({
     messages,
-    estimateSize,
-    overscan,
+    estimateSize: CHAT_CONFIG.VIRTUALIZER.ESTIMATE_SIZE,
+    overscan: CHAT_CONFIG.VIRTUALIZER.OVERSCAN,
     scrollRef: scrollContainerRef,
   });
 
@@ -32,33 +30,26 @@ export const VirtualizedMessageList = ({
     <div
       ref={scrollContainerRef}
       style={{
-        width: '100%',
-        height: '100%',
-        overflow: 'auto',
-        paddingLeft: '25px',
-        paddingRight: '5px',
+        paddingLeft: `${CHAT_CONFIG.PADDING.LEFT}px`,
+        paddingRight: `${CHAT_CONFIG.PADDING.RIGHT}px`,
       }}
+      className={styles['scrollContainer']}
     >
       <div
+        className={styles['listContainer']}
         style={{
           height: `${totalSize}px`,
-          width: '100%',
-          position: 'relative',
         }}
       >
         {virtualItems.map(virtualItem => {
           const message = messages[virtualItem.index];
-
           return (
             <div
               key={message._id}
               data-index={virtualItem.index}
               ref={rowVirtualizer.measureElement}
+              className={styles['virtualItem']}
               style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
                 transform: `translateY(${virtualItem.start}px)`,
               }}
             >
@@ -66,6 +57,8 @@ export const VirtualizedMessageList = ({
                 username={message.username}
                 text={message.text}
                 time={message.time}
+                userId={message._id}
+                avatarURL={message.avatarURL}
               />
             </div>
           );

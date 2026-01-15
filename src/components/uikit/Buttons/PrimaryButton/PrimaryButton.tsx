@@ -1,7 +1,7 @@
 import { ButtonTypes } from '@/types/enums';
 import styles from './primaryButton.module.scss';
 
-type Props = {
+type PrimaryButtonProps = {
   content: string;
   widthSize: string;
   handler?: () => void;
@@ -10,7 +10,7 @@ type Props = {
   type?: ButtonTypes;
 };
 
-export const PrimaryButton: React.FC<Props> = ({
+export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   content,
   widthSize,
   handler,

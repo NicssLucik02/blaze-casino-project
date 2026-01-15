@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useRef } from 'react';
 
 interface UseSwipeToCloseProps {
   onClose: () => void;
@@ -7,22 +7,28 @@ interface UseSwipeToCloseProps {
 
 export const useSwipeToClose = ({
   onClose,
-  threshold = 50,
+  threshold = 100,
 }: UseSwipeToCloseProps) => {
-  const [startY, setStartY] = useState(0);
+  const touchStartY = useRef<number>(0);
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setStartY(e.touches[0].clientY);
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartY.current = e.touches[0].clientY;
+  }, []);
+
+  const handleTouchMove = useCallback(
+    (e: React.TouchEvent) => {
+      const touchEndY = e.touches[0].clientY;
+      const deltaY = touchEndY - touchStartY.current;
+
+      if (deltaY > threshold) {
+        onClose();
+      }
+    },
+    [onClose, threshold]
+  );
+
+  return {
+    handleTouchStart,
+    handleTouchMove,
   };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    const currentY = e.touches[0].clientY;
-    const diff = currentY - startY;
-
-    if (diff > threshold) {
-      onClose();
-    }
-  };
-
-  return { handleTouchStart, handleTouchMove };
 };

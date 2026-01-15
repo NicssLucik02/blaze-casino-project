@@ -1,8 +1,7 @@
 'use client';
-import { UI_MESSAGES } from '@/config/constants';
 import styles from './headerMain.module.scss';
 import { ClipLoader } from 'react-spinners';
-import { Settings } from 'lucide-react';
+import Settings from 'lucide-react/dist/esm/icons/settings';
 import LogoutIcon from '../../../../public/icons/login.svg';
 import { BurgerMenu } from '@/components/BurgerMenu/BurgerMenu';
 import Image from 'next/image';
@@ -10,6 +9,8 @@ import { SecondaryButton } from '@/components/uikit/Buttons/SecondaryButton/Seco
 import coinIcon from '../../../../public/icons/coin.png';
 import userAvatar from '../../../assets/images/userAvatar.png';
 import { useLogout } from '@/hooks/useAuth';
+import { UI_MESSAGES } from '@/config/uiMessages';
+import { useCurrentUser } from '@/hooks/useCurrentUser';
 
 export const HeaderMain = () => {
   const logoutMutation = useLogout();
@@ -18,6 +19,7 @@ export const HeaderMain = () => {
     logoutMutation.mutate();
   };
 
+  const { data: user } = useCurrentUser();
   return (
     <div className={styles['headerMain']}>
       <div className={styles['headerMainUserContainer']}>
@@ -27,9 +29,17 @@ export const HeaderMain = () => {
         />
         <div className={styles['headerMainBalance']}>
           <Image src={coinIcon} alt="coin" width={24} height={24} />
-          <span>10,000.00</span>
+          <span>{user?.balance}</span>
         </div>
-        <Image src={userAvatar} alt="avatar" width={32} height={32} />
+        <div>
+          <Image
+            src={user?.avatarURL || userAvatar}
+            alt="avatar"
+            width={44}
+            height={44}
+            className={styles['headerMainAvatar']}
+          />
+        </div>
       </div>
       <div className={styles['headerMainActions']}>
         <Settings />

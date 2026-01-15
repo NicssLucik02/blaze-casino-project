@@ -5,7 +5,7 @@ import { PrimaryButton } from '../../uikit/Buttons/PrimaryButton/PrimaryButton';
 import { ButtonTypes, InputTypes } from '@/types/enums';
 import LoginIcon from '../../../../public/icons/login.svg';
 import { ErrorMessage } from '@/components/uikit/ErrorMessage';
-import { UI_MESSAGES } from '@/config/constants';
+import { UI_MESSAGES } from '@/config/uiMessages';
 
 export const SignupForm = () => {
   const {

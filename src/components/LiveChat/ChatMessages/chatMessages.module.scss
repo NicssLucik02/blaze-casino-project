@@ -14,10 +14,6 @@
   -ms-overflow-style: none;
 
   @include laptop {
-    overflow-y: auto;
-    overflow-x: visible;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
   }
 
   &Container {

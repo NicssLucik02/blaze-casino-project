@@ -6,7 +6,7 @@ import { ButtonTypes, InputTypes } from '@/types/enums';
 import LoginIcon from '../../../../public/icons/login.svg';
 import { ErrorMessage } from '@/components/uikit/ErrorMessage';
 import { ClipLoader } from 'react-spinners';
-import { UI_MESSAGES } from '@/config/constants';
+import { UI_MESSAGES } from '@/config/uiMessages';
 
 export const LoginForm = () => {
   const {

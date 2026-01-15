@@ -21,30 +21,11 @@
     margin-bottom: 16px;
   }
 
-  &Input {
-    background-color: var(--color-purple2);
-    color: var(--color-white);
-    border: none;
-    height: 40px;
-    border-radius: 100px;
-    padding-left: 16px;
+  @include laptop {
     flex: 1;
-
-    &::placeholder {
-      @include secondary-text;
-      color: var(--color-white);
-    }
-
-    &:focus {
-      outline: 1px solid var(--color-white);
-    }
-
-    @include laptop {
-      flex: 1;
-      width: auto;
-      position: relative;
-      backdrop-filter: blur(4px);
-    }
+    width: auto;
+    position: relative;
+    backdrop-filter: blur(4px);
   }
 
   &Button {
@@ -53,6 +34,11 @@
     height: 40px;
     border-radius: 50%;
     flex-shrink: 0;
+    transition: all 0.5s ease;
+
+    &:hover {
+      background-color: var(--color-violet);
+    }
 
     @include laptop {
       backdrop-filter: blur(4px);

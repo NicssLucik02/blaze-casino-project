@@ -1,20 +1,29 @@
+import React from 'react';
 import Image from 'next/image';
 import styles from './chatMessage.module.scss';
 import Avatar from '../../../assets/images/avatarMessage.jpg';
 
-type Props = {
+type ChatMessageProps = {
   username: string;
   text: string;
   time: string;
+  avatarURL?: string;
 };
 
-export const ChatMessage: React.FC<Props> = ({ username, text, time }) => {
+const ChatMessageComponent: React.FC<ChatMessageProps> = ({
+  username,
+  text,
+  time,
+  avatarURL,
+}) => {
   return (
     <div className={styles['chatMessage']}>
       <Image
         className={styles['chatMessageAvatar']}
-        src={Avatar}
+        src={avatarURL || Avatar}
         alt="avatar"
+        width={44}
+        height={44}
       />
 
       <div className={styles['chatMessageHeader']}>
@@ -28,3 +37,5 @@ export const ChatMessage: React.FC<Props> = ({ username, text, time }) => {
     </div>
   );
 };
+
+export const ChatMessage = React.memo(ChatMessageComponent);

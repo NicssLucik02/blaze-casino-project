@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { useChatStore } from '@/store/useChatStore';
 import styles from './chatMessages.module.scss';
 import { ChatEmptyState } from './ChatEmptyState/ChatEmptyState';
-import { VirtualizedMessageList } from './VirtualizedMessageList';
+import { VirtualizedMessageList } from './VirtualizedMessageList/VirtualizedMessageList';
 import { LoadingState } from '@/components/uikit/LoadingState/LoadingState';
 
 export const ChatMessages = () => {
@@ -32,11 +32,7 @@ export const ChatMessages = () => {
 
   return (
     <div className={styles['liveChatMessages']}>
-      <VirtualizedMessageList
-        messages={currentMessages}
-        estimateSize={166}
-        overscan={30}
-      />
+      <VirtualizedMessageList messages={currentMessages} />
     </div>
   );
 };

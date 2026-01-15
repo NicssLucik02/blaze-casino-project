@@ -29,7 +29,8 @@ class ApiService {
 
   private async request<T>(
     endpoint: string,
-    options?: RequestInit
+    options?: RequestInit,
+    accessToken?: string
   ): Promise<T> {
     const url = `${this.baseURL}${endpoint}`;
 
@@ -39,6 +40,7 @@ class ApiService {
       ...options,
       headers: {
         'Content-Type': API_CONFIG.HEADERS.CONTENT_TYPE,
+        ...this.getAuthHeaders(accessToken),
         ...options?.headers,
       },
     };
@@ -60,42 +62,57 @@ class ApiService {
     }
   }
 
-  async get<T>(endpoint: string, token?: string): Promise<T> {
-    return this.request<T>(endpoint, {
-      method: 'GET',
-      headers: this.getAuthHeaders(token),
-    });
+  public async get<T>(endpoint: string, accessToken?: string): Promise<T> {
+    return this.request<T>(endpoint, { method: 'GET' }, accessToken);
   }
 
-  async post<T>(endpoint: string, data?: any, token?: string): Promise<T> {
-    return this.request<T>(endpoint, {
-      method: 'POST',
-      body: data ? JSON.stringify(data) : undefined,
-      headers: this.getAuthHeaders(token),
-    });
+  public async post<T>(
+    endpoint: string,
+    body?: unknown,
+    accessToken?: string
+  ): Promise<T> {
+    return this.request<T>(
+      endpoint,
+      {
+        method: 'POST',
+        body: body ? JSON.stringify(body) : undefined,
+      },
+      accessToken
+    );
   }
 
-  async put<T>(endpoint: string, data?: any, token?: string): Promise<T> {
-    return this.request<T>(endpoint, {
-      method: 'PUT',
-      body: data ? JSON.stringify(data) : undefined,
-      headers: this.getAuthHeaders(token),
-    });
+  public async patch<T>(
+    endpoint: string,
+    body: unknown,
+    accessToken?: string
+  ): Promise<T> {
+    return this.request<T>(
+      endpoint,
+      {
+        method: 'PATCH',
+        body: JSON.stringify(body),
+      },
+      accessToken
+    );
   }
 
-  async patch<T>(endpoint: string, data?: any, token?: string): Promise<T> {
-    return this.request<T>(endpoint, {
-      method: 'PATCH',
-      body: data ? JSON.stringify(data) : undefined,
-      headers: this.getAuthHeaders(token),
-    });
+  public async put<T>(
+    endpoint: string,
+    body: unknown,
+    accessToken?: string
+  ): Promise<T> {
+    return this.request<T>(
+      endpoint,
+      {
+        method: 'PUT',
+        body: JSON.stringify(body),
+      },
+      accessToken
+    );
   }
 
-  async delete<T>(endpoint: string, token?: string): Promise<T> {
-    return this.request<T>(endpoint, {
-      method: 'DELETE',
-      headers: this.getAuthHeaders(token),
-    });
+  public async delete<T>(endpoint: string, accessToken?: string): Promise<T> {
+    return this.request<T>(endpoint, { method: 'DELETE' }, accessToken);
   }
 }
 

@@ -15,7 +15,8 @@ export const useMessageInput = (): UseMessageInputReturn => {
   const [inputMessage, setInputMessage] = useState('');
   const [isSending, setIsSending] = useState(false);
 
-  const { isConnected, sendMessage } = useChatStore();
+  const isConnected = useChatStore(state => state.isConnected);
+  const sendMessage = useChatStore(state => state.sendMessage);
 
   const handleSendMessage = useCallback(async () => {
     if (!inputMessage.trim() || !isConnected || isSending) return;

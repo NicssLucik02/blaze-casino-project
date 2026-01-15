@@ -2,7 +2,8 @@
 import { usePathname } from 'next/navigation';
 import styles from './authBottom.module.scss';
 import Link from 'next/link';
-import { ROUTES, UI_MESSAGES } from '@/config/constants';
+import { ROUTES } from '@/config/constants';
+import { UI_MESSAGES } from '@/config/uiMessages';
 
 export const AuthBottom = () => {
   const pathname = usePathname();

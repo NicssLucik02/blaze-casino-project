@@ -8,17 +8,14 @@ import {
   RoomId,
   SendMessagePayload,
 } from '@/types/chat';
-import React from 'react';
 
 interface ChatState {
   messages: Record<RoomId, ChatMessage[]>;
   rooms: ChatRoom[];
   currentRoom: RoomId;
   isConnected: boolean;
-  messageInputValue: string;
   error: string | null;
 
-  setMessageInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
   connect: () => Promise<void>;
   disconnect: () => void;
   switchRoom: (roomId: RoomId) => void;
@@ -27,8 +24,6 @@ interface ChatState {
 }
 
 export const useChatStore = create<ChatState>((set, get) => ({
-  messageInputValue: '',
-
   messages: {
     general: [],
     crash: [],
@@ -37,8 +32,6 @@ export const useChatStore = create<ChatState>((set, get) => ({
   currentRoom: RoomId.GENERAL,
   isConnected: false,
   error: null,
-
-  setMessageInput: event => set({ messageInputValue: event.target.value }),
 
   connect: async () => {
     const token = tokenStorage.getAccessToken();

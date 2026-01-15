@@ -3,9 +3,9 @@ export interface ChatMessage {
   roomId: string;
   username: string;
   text: string;
-  userId: string;
   time: string;
   createdAt: string;
+  avatarURL: string;
 }
 
 export interface ChatRoom {

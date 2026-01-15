@@ -1,10 +1,10 @@
-import { UI_MESSAGES } from '@/config/constants';
+import { UI_MESSAGES } from '@/config/uiMessages';
 
-type Props = {
+type ErrorMessageProps = {
   error: string;
 };
 
-export const ErrorMessage: React.FC<Props> = ({ error }) => {
+export const ErrorMessage: React.FC<ErrorMessageProps> = ({ error }) => {
   return (
     <div className="error">
       {error.includes('Too many requests') || error.includes('429')
