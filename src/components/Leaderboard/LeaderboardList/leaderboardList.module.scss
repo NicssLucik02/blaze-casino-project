@@ -1,0 +1,36 @@
+.LeaderboardList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 8px;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-grey);
+    border-radius: 3px;
+
+    &:hover {
+      background: var(--color-white);
+    }
+  }
+}
+
+.active {
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background:
+    linear-gradient(var(--color-dark-blue2), var(--color-dark-blue2))
+      padding-box,
+    linear-gradient(to right, var(--gradient-accent)) border-box;
+}
