@@ -3,12 +3,9 @@ import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.share
 import { LoginRequestData, RegisterRequestData } from '@/types/auth';
 import { tokenStorage } from '@/services/token.service';
 import { authApi } from '@/services/auth.api';
-import {
-  ROUTES,
-  QUERY_KEYS,
-  UI_MESSAGES,
-  LOGGER_CONFIG,
-} from '@/config/constants';
+import { ROUTES, QUERY_KEYS, LOGGER_CONFIG } from '@/config/constants';
+import { socketService } from './socket.service';
+import { UI_MESSAGES } from '@/config/uiMessages';
 
 type AuthSuccessResponse = {
   accessToken: string;
@@ -35,6 +32,7 @@ class AuthFlowService {
     queryClient: QueryClient,
     router: AppRouterInstance
   ): void {
+    socketService.disconnect();
     tokenStorage.clearAll();
     queryClient.clear();
     router.push(ROUTES.LOGIN);

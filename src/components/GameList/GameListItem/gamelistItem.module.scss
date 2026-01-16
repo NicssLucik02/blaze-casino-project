@@ -123,6 +123,7 @@
     @include secondary-text;
     max-width: 216px;
     z-index: 2;
+    backdrop-filter: blur(5px);
 
     @include tablet {
       max-width: 180px;

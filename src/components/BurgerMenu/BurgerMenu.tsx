@@ -8,16 +8,19 @@ import Settings from '../../../public/icons/settings.svg';
 import LoginIcon from '../../../public/icons/login.svg';
 import InventoryIcon from '../../../public/icons/inventory.svg';
 import { SecondaryButton } from '../uikit/Buttons/SecondaryButton/SecondaryButton';
-import { UI_MESSAGES } from '@/config/constants';
 import { ClipLoader } from 'react-spinners';
 import { BlazeLogo } from '../Header/HeaderLogo/BlazeLogo';
+import { UI_MESSAGES } from '@/config/uiMessages';
 
-type Props = {
+type BurgerMenuProps = {
   logoutAction: () => void;
   isLoggingOut: boolean;
 };
 
-export const BurgerMenu: React.FC<Props> = ({ logoutAction, isLoggingOut }) => {
+export const BurgerMenu: React.FC<BurgerMenuProps> = ({
+  logoutAction,
+  isLoggingOut,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {

@@ -16,7 +16,7 @@ export const Leaderboard = () => {
         <ul className={styles['leaderboardList']}>
           <LeaderboardItem
             rank="1"
-            username="LuckyStrike"
+            username="LuckyStrikeLuckyStrike"
             balance="1000"
             gamesCount="20"
             avgWins="60"

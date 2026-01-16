@@ -1,0 +1,33 @@
+@import '../../../../styles/mixins/media';
+
+.chatButton {
+  display: none;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to left, var(--gradient-accent));
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+
+  @include laptop {
+    display: flex;
+  }
+
+  &:hover {
+    background: none;
+    background-color: var(--color-gold);
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

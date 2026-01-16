@@ -7,14 +7,20 @@
   @include laptop {
     width: 70%;
   }
+
   @include tablet {
     width: 100%;
+    order: -1;
   }
 
   &Items {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+
+    @include tablet {
+      gap: 16px;
+    }
 
     @include mobile {
       display: flex;

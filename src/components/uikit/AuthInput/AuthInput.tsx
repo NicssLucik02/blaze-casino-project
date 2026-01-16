@@ -1,10 +1,11 @@
 'use client';
 import { InputTypes } from '@/types/enums';
 import styles from './authInput.module.scss';
-import { Eye, EyeOff } from 'lucide-react';
+import Eye from 'lucide-react/dist/esm/icons/eye';
+import EyeOff from 'lucide-react/dist/esm/icons/eye-off';
 import { useState, forwardRef } from 'react';
 
-type Props = {
+type AuthInputProps = {
   type: InputTypes;
   pholder: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -14,7 +15,7 @@ type Props = {
   error?: string;
 };
 
-export const AuthInput = forwardRef<HTMLInputElement, Props>(
+export const AuthInput = forwardRef<HTMLInputElement, AuthInputProps>(
   ({ type, pholder, onChange, onBlur, name, value, error }, ref) => {
     const [showPassword, setShowPassword] = useState(false);
     const [hideError, setHideError] = useState(false);

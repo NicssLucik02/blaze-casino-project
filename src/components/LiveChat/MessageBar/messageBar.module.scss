@@ -1,0 +1,47 @@
+@import '../../../styles/mixins/fonts';
+@import '../../../styles/mixins/media';
+
+.messageBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 16px;
+  gap: 16px;
+
+  @include laptop {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    width: calc(100% - 32px);
+    margin-top: 0;
+    border-radius: 24px;
+    z-index: 10;
+    margin-bottom: 16px;
+  }
+
+  @include laptop {
+    flex: 1;
+    width: auto;
+    position: relative;
+    backdrop-filter: blur(4px);
+  }
+
+  &Button {
+    background-color: var(--color-purple2);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: all 0.5s ease;
+
+    &:hover {
+      background-color: var(--color-violet);
+    }
+
+    @include laptop {
+      backdrop-filter: blur(4px);
+    }
+  }
+}

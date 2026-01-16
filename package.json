@@ -16,7 +16,7 @@
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "@tanstack/react-query": "^5.90.16",
-    "@tanstack/react-query-devtools": "^5.91.2",
+    "@tanstack/react-virtual": "^3.13.18",
     "classnames": "^2.5.1",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.562.0",
@@ -27,10 +27,12 @@
     "react-spinners": "^0.17.0",
     "sass": "^1.97.1",
     "scss": "^0.2.4",
+    "socket.io-client": "^4.8.3",
     "zod": "^4.3.5",
     "zustand": "^5.0.9"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^16.1.2",
     "@svgr/webpack": "^8.1.0",
     "@tailwindcss/postcss": "^4",
     "@types/js-cookie": "^3.0.6",

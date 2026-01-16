@@ -1,5 +1,6 @@
 import { z } from 'zod';
-import { VALIDATION, VALIDATION_MESSAGES } from '@/config/constants';
+import { VALIDATION } from '@/config/constants';
+import { VALIDATION_MESSAGES } from '@/config/uiMessages';
 
 export const loginSchema = z.object({
   email: z

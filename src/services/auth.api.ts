@@ -1,4 +1,4 @@
-import { apiService } from '@/services/api.serviсe';
+import { apiService } from '@/services/api.service';
 import { API_CONFIG } from '@/config/constants';
 import {
   RegisterRequestData,

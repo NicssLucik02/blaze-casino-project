@@ -2,7 +2,7 @@ import styles from './input.module.scss';
 
 import classNames from 'classnames';
 
-type Props = {
+type PrimaryInputProps = {
   placeholderValue: string;
   type: string;
   bgColor?: string;
@@ -13,7 +13,7 @@ type Props = {
   isDisabled?: boolean;
 };
 
-export const PrimaryInput: React.FC<Props> = ({
+export const PrimaryInput: React.FC<PrimaryInputProps> = ({
   placeholderValue,
   type,
   widthSize,

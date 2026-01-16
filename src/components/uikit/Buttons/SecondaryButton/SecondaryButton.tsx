@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import styles from './secondaryButton.module.scss';
 import { useCallback } from 'react';
 
-type Props = {
+type SecondaryButtonProps = {
   amount?: number;
   content: string;
   icon?: React.ReactNode;
@@ -16,7 +16,7 @@ type Props = {
   isActive?: boolean;
 };
 
-export const SecondaryButton: React.FC<Props> = ({
+export const SecondaryButton: React.FC<SecondaryButtonProps> = ({
   amount,
   content,
   icon,
