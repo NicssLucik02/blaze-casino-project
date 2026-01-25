@@ -77,6 +77,7 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({
                   widthSize="100%"
                   handler={handleLogout}
                   icon={isLoggingOut ? <ClipLoader /> : <LoginIcon />}
+                  disp="flex"
                 />
               </div>
             </div>

@@ -1,4 +1,4 @@
-@import './media';
+@use './media' as media;
 
 @mixin shadow-blur($color, $blur, $spread: 0) {
   box-shadow: 0 0 $blur $spread $color;
@@ -11,11 +11,11 @@
 @mixin inline-padding {
   padding-inline: 48px;
 
-  @include desktop {
+  @include media.desktop {
     padding-inline: 24px;
   }
 
-  @include laptop {
+  @include media.laptop {
     padding-inline: 16px;
   }
 }

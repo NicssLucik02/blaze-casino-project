@@ -1,4 +1,4 @@
-@import '../../../../styles/mixins/fonts';
+@use '../../../../styles/mixins/fonts' as fonts;
 
 .inputBet {
   flex: 1;
@@ -8,7 +8,7 @@
   border-radius: 8px;
   background: transparent;
   color: var(--color-white);
-  @include main-text;
+  @include fonts.main-text;
 
   &Wrapper {
     display: flex;
@@ -16,7 +16,7 @@
     gap: 8px;
   }
   &Desc {
-    @include secondary-text;
+    @include fonts.secondary-text;
     color: var(--color-grey);
   }
 

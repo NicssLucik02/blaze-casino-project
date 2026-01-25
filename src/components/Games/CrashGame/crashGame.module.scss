@@ -1,6 +1,6 @@
-@import '../../../styles//mixins/mixins';
-@import '../../../styles//mixins/fonts';
-@import '../../../styles//mixins/media';
+@use '../../../styles/mixins/mixins' as mixins;
+@use '../../../styles/mixins/fonts' as fonts;
+@use '../../../styles/mixins/media' as media;
 
 .crashGame {
   width: 100%;
@@ -10,9 +10,9 @@
     display: flex;
     gap: 24px;
     margin-top: 40px;
-    @include inline-padding;
+    @include mixins.inline-padding;
 
-    @include laptop {
+    @include media.laptop {
       flex-direction: column;
     }
   }
@@ -27,7 +27,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    @include laptop {
+    @include media.laptop {
       width: 100%;
     }
   }
@@ -38,12 +38,12 @@
     text-align: center;
 
     &Value {
-      @include h1-satoshi(64px);
+      @include fonts.h1-satoshi(64px);
       color: var(--color-grey);
     }
 
     &Text {
-      @include h2-inter(32px);
+      @include fonts.h2-inter(32px);
       color: var(--color-grey);
     }
   }

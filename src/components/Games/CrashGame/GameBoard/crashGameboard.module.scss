@@ -1,4 +1,4 @@
-@import '../../../../styles/mixins/media';
+@use '../../../../styles/mixins/media' as media;
 
 .crashGameboard {
   position: relative;

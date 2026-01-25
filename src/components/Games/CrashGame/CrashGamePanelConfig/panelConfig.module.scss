@@ -1,5 +1,5 @@
-@import '../../../../styles/mixins/fonts';
-@import '../../../../styles/mixins/fonts';
+@use '../../../../styles/mixins/fonts' as fonts;
+@use '../../../../styles/mixins/media' as media;
 
 .panelConfig {
   background-color: var(--color-card);
@@ -7,7 +7,7 @@
   width: 32%;
   height: 100%;
 
-  @include laptop {
+  @include media.laptop {
     width: 100%;
   }
 
@@ -31,7 +31,7 @@
   }
 
   &Title {
-    @include h1-satoshi(32px);
+    @include fonts.h1-satoshi(32px);
   }
 
   &Result {
@@ -44,7 +44,7 @@
     &Item {
       display: flex;
       justify-content: space-between;
-      @include main-text;
+      @include fonts.main-text;
     }
 
     &Desc {

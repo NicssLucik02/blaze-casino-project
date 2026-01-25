@@ -1,5 +1,5 @@
-@import '../../../styles//mixins//fonts';
-@import '../../../styles//mixins//mixins';
+@use '../../../styles/mixins/fonts' as fonts;
+@use '../../../styles/mixins/mixins' as mixins;
 
 .backDashboardLink {
   display: flex;
@@ -11,8 +11,8 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  @include main-text;
-  @include inline-padding;
+  @include fonts.main-text;
+  @include mixins.inline-padding;
   margin-top: 28px;
 
   &Icon {

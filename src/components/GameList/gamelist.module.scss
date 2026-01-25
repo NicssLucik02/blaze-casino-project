@@ -1,14 +1,14 @@
-@import '../../styles/mixins/media';
+@use '../../styles/mixins/media' as media;
 
 .gameList {
   width: 50%;
   height: auto;
 
-  @include laptop {
+  @include media.laptop {
     width: 70%;
   }
 
-  @include tablet {
+  @include media.tablet {
     width: 100%;
     order: -1;
   }
@@ -18,11 +18,11 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
 
-    @include tablet {
+    @include media.tablet {
       gap: 16px;
     }
 
-    @include mobile {
+    @include media.mobile {
       display: flex;
       flex-direction: column;
       gap: 12px;

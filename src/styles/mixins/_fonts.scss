@@ -1,4 +1,4 @@
-@import './media.scss';
+@use './media.scss' as media;
 
 @mixin h1-satoshi($fs: 32px) {
   font-size: $fs;
@@ -6,7 +6,7 @@
   line-height: 130%;
   font-family: var(--font-satoshi), sans-serif;
 
-  @include mobile-large {
+  @include media.mobile-large {
     font-size: 24px;
   }
 }
@@ -17,7 +17,7 @@
   line-height: 120%;
   font-family: var(--font-inter), sans-serif;
 
-  @include mobile-large {
+  @include media.mobile-large {
     font-size: 16px;
   }
 }

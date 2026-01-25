@@ -1,5 +1,5 @@
-@import '../../../styles/mixins/fonts';
-@import '../../../styles/mixins/media';
+@use '../../../styles/mixins/fonts' as fonts;
+@use '../../../styles/mixins/media' as media;
 
 .messageBar {
   display: flex;
@@ -9,7 +9,7 @@
   margin-top: 16px;
   gap: 16px;
 
-  @include laptop {
+  @include media.laptop {
     position: absolute;
     bottom: 16px;
     left: 16px;
@@ -21,7 +21,7 @@
     margin-bottom: 16px;
   }
 
-  @include laptop {
+  @include media.laptop {
     flex: 1;
     width: auto;
     position: relative;
@@ -40,7 +40,7 @@
       background-color: var(--color-violet);
     }
 
-    @include laptop {
+    @include media.laptop {
       backdrop-filter: blur(4px);
     }
   }

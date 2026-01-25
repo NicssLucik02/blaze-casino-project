@@ -1,11 +1,11 @@
-@import '../../styles/mixins/media';
+@use '../../styles/mixins/media' as media;
 
 .liveChat {
   display: flex;
   flex-direction: column;
   width: 24%;
 
-  @include laptop {
+  @include media.laptop {
     position: fixed;
     top: 100%;
     left: 0;
@@ -21,7 +21,7 @@
   }
 
   &--open {
-    @include laptop {
+    @include media.laptop {
       transform: translateY(-100%);
     }
   }
@@ -30,7 +30,7 @@
 .overlay {
   display: none;
 
-  @include laptop {
+  @include media.laptop {
     display: block;
     position: fixed;
     top: 0;
@@ -55,7 +55,7 @@
 .swipeIndicator {
   display: none;
 
-  @include laptop {
+  @include media.laptop {
     display: block;
     width: 40px;
     height: 4px;

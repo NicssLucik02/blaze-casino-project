@@ -1,4 +1,4 @@
-@import '../../../styles/mixins/fonts';
+@use '../../../styles/mixins/fonts' as fonts;
 
 .leaderboardItem {
   display: flex;
@@ -15,7 +15,7 @@
   &Rank {
     width: 32px;
     height: 32px;
-    @include h2-inter(24px);
+    @include fonts.h2-inter(24px);
   }
 
   &Info {
@@ -35,7 +35,7 @@
     display: flex;
     align-items: center;
     gap: 2px;
-    @include h2-inter(16px);
+    @include fonts.h2-inter(16px);
 
     &Username {
       display: flex;
@@ -52,18 +52,18 @@
     }
 
     &You {
-      @include small-text;
+      @include fonts.small-text;
       color: var(--color-grey);
       margin: 0;
     }
 
     &Games {
-      @include small-text;
+      @include fonts.small-text;
       color: var(--color-grey);
     }
 
     &Wins {
-      @include small-text;
+      @include fonts.small-text;
       color: var(--color-green-success);
     }
   }

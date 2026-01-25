@@ -1,11 +1,12 @@
-@import '../../../styles/mixins/fonts';
+@use '../../../styles/mixins/fonts' as fonts;
+@use '../../../styles/mixins/media' as media;
 
 .headerMain {
   display: flex;
   align-items: center;
   gap: 54px;
 
-  @include tablet {
+  @include media.tablet {
     width: 100%;
     gap: 0;
   }
@@ -15,7 +16,7 @@
     align-items: center;
     gap: 16px;
 
-    @include tablet {
+    @include media.tablet {
       width: 100%;
       justify-content: space-between;
       gap: 0;
@@ -42,7 +43,7 @@
     height: 52px;
     border-radius: 100px;
     gap: 8px;
-    @include h2-inter(16px);
+    @include fonts.h2-inter(16px);
   }
 
   &Actions {
@@ -50,7 +51,7 @@
     align-items: center;
     gap: 16px;
 
-    @include tablet {
+    @include media.tablet {
       display: none;
     }
   }
