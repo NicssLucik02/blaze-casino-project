@@ -1,0 +1,58 @@
+@import '../../../../styles/mixins/fonts';
+@import '../../../../styles/mixins/fonts';
+
+.panelConfig {
+  background-color: var(--color-card);
+  border-radius: 16px;
+  width: 32%;
+  height: 100%;
+
+  @include laptop {
+    width: 100%;
+  }
+
+  &Container {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 32px;
+    gap: 30px;
+  }
+
+  &Inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &Buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &Title {
+    @include h1-satoshi(32px);
+  }
+
+  &Result {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--color-grey);
+
+    &Item {
+      display: flex;
+      justify-content: space-between;
+      @include main-text;
+    }
+
+    &Desc {
+      color: var(--color-grey);
+    }
+
+    &Amount {
+      color: var(--color-green-success);
+    }
+  }
+}

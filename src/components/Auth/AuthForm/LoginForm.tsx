@@ -1,6 +1,6 @@
 import styles from '../auth.module.scss';
-import { useLoginForm } from '@/hooks/useAuthForm';
-import { AuthInput } from '../../uikit/AuthInput/AuthInput';
+import { useLoginForm } from '@/hooks/Auth/useAuthForm';
+import { AuthInput } from '../../uikit/Inputs/AuthInput/AuthInput';
 import { PrimaryButton } from '../../uikit/Buttons/PrimaryButton/PrimaryButton';
 import { ButtonTypes, InputTypes } from '@/types/enums';
 import LoginIcon from '../../../../public/icons/login.svg';

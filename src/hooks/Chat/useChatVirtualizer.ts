@@ -15,6 +15,7 @@ export const useChatVirtualizer = ({
   overscan = 5,
   scrollRef,
 }: UseChatVirtualizerProps) => {
+  // eslint-disable-next-line react-hooks/incompatible-library
   const rowVirtualizer = useVirtualizer({
     count: messages.length,
     getScrollElement: () => scrollRef?.current || null,

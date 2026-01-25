@@ -12,16 +12,14 @@ import {
 
 class SocketService {
   private socket: Socket | null = null;
+  private crashSocket: Socket | null = null;
   private reconnectAttempts = 0;
   private maxReconnectAttempts = 5;
 
   connect(accessToken: string): Socket {
     if (this.socket?.connected) {
-      console.log('✅ Socket already connected');
       return this.socket;
     }
-
-    console.log('🔌 Connecting to socket server...');
 
     this.socket = io(API_CONFIG.BASE_URL.replace('/api', ''), {
       auth: {
@@ -42,12 +40,11 @@ class SocketService {
     if (!this.socket) return;
 
     this.socket.on('connect', () => {
-      console.log('✅ Socket connected:', this.socket?.id);
       this.reconnectAttempts = 0;
     });
 
     this.socket.on('disconnect', reason => {
-      console.log('❌ Socket disconnected:', reason);
+      console.warn('❌ Socket disconnected:', reason);
     });
 
     this.socket.on('connect_error', error => {
@@ -70,17 +67,14 @@ class SocketService {
   }
 
   joinRoom(roomId: RoomId): void {
-    console.log('🚪 Joining room:', roomId);
     this.socket?.emit('chat:join', { roomId } as JoinRoomPayload);
   }
 
   leaveRoom(roomId: RoomId): void {
-    console.log('🚪 Leaving room:', roomId);
     this.socket?.emit('chat:leave', { roomId } as JoinRoomPayload);
   }
 
   sendMessage(payload: SendMessagePayload): void {
-    console.log('📤 Sending message:', payload);
     this.socket?.emit('chat:message', payload);
   }
 
@@ -96,8 +90,73 @@ class SocketService {
     this.socket?.on('chat:error', callback);
   }
 
+  connectCrash(): Socket {
+    if (this.crashSocket?.connected) {
+      return this.crashSocket;
+    }
+
+    const baseUrl = API_CONFIG.BASE_URL.replace('/api', '');
+    this.crashSocket = io(`${baseUrl}/crash`, {
+      transports: ['websocket', 'polling'],
+      reconnection: true,
+      reconnectionAttempts: this.maxReconnectAttempts,
+      reconnectionDelay: 1000,
+    });
+
+    this.crashSocket.on('connect', () => {
+      // console.log('✅ Crash socket connected:', this.crashSocket?.id);
+    });
+
+    this.crashSocket.on('disconnect', reason => {
+      console.warn('❌ Crash socket disconnected:', reason);
+    });
+
+    this.crashSocket.on('connect_error', error => {
+      console.error('❌ Crash socket connection error:', error);
+    });
+
+    return this.crashSocket;
+  }
+
+  subscribeToGame(gameId: string): void {
+    this.crashSocket?.emit('subscribe:game', { gameId });
+  }
+
+  onGameTick(
+    callback: (data: {
+      gameId: string;
+      multiplier: number;
+      elapsed: number;
+    }) => void
+  ): void {
+    this.crashSocket?.on('game:tick', callback);
+  }
+
+  onGameCrash(
+    callback: (data: {
+      gameId: string;
+      crashPoint: number;
+      serverSeed: string;
+      reveal: string;
+    }) => void
+  ): void {
+    this.crashSocket?.on('game:crash', callback);
+  }
+
+  offCrashEvents(): void {
+    this.crashSocket?.off('game:tick');
+    this.crashSocket?.off('game:crash');
+  }
+
+  disconnectCrash(): void {
+    if (this.crashSocket) {
+      this.crashSocket.removeAllListeners();
+      this.crashSocket.disconnect();
+      this.crashSocket = null;
+    }
+  }
+
   disconnect(): void {
-    console.log('🔌 Disconnecting socket...');
     if (this.socket) {
       this.socket.removeAllListeners();
       this.socket.disconnect();
@@ -109,8 +168,16 @@ class SocketService {
     return this.socket?.connected ?? false;
   }
 
+  isCrashConnected(): boolean {
+    return this.crashSocket?.connected ?? false;
+  }
+
   getSocket(): Socket | null {
     return this.socket;
+  }
+
+  getCrashSocket(): Socket | null {
+    return this.crashSocket;
   }
 }
 

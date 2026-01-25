@@ -1,0 +1,27 @@
+.switcher {
+  width: 36px;
+  height: 18px;
+  border-radius: 100px;
+  background-color: var(--color-white);
+  position: relative;
+
+  &Round {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--color-green-success);
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: all 0.3s ease;
+  }
+}
+
+.active {
+  background-color: var(--color-green-success);
+
+  &Round {
+    background-color: var(--color-white);
+    left: 20px;
+  }
+}

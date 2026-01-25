@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { SecondaryButton } from '@/components/uikit/Buttons/SecondaryButton/SecondaryButton';
 import coinIcon from '../../../../public/icons/coin.png';
 import userAvatar from '../../../assets/images/userAvatar.png';
-import { useLogout } from '@/hooks/useAuth';
+import { useLogout } from '@/hooks/Auth/useAuth';
 import { UI_MESSAGES } from '@/config/uiMessages';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 
@@ -29,7 +29,7 @@ export const HeaderMain = () => {
         />
         <div className={styles['headerMainBalance']}>
           <Image src={coinIcon} alt="coin" width={24} height={24} />
-          <span>{user?.balance}</span>
+          <span>{user?.balance.toFixed(2)}</span>
         </div>
         <div>
           <Image
@@ -48,6 +48,7 @@ export const HeaderMain = () => {
           widthSize="118px"
           handler={handleLogout}
           icon={logoutMutation.isPending ? <ClipLoader /> : <LogoutIcon />}
+          disp={'flex'}
         />
       </div>
     </div>

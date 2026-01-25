@@ -11,7 +11,7 @@ export const LeaderboardList = () => {
   );
 
   return (
-    <ul className={styles['leaderboardList']}>
+    <ul className={styles['LeaderboardList']}>
       {isLoading && <LoaderCircle />}
 
       {isError && <p>{error?.message}</p>}

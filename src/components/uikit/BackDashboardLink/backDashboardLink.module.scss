@@ -1,0 +1,21 @@
+@import '../../../styles//mixins//fonts';
+@import '../../../styles//mixins//mixins';
+
+.backDashboardLink {
+  display: flex;
+  align-items: center;
+  color: var(--gradient-accent);
+  text-decoration: none;
+  gap: 6px;
+  background: linear-gradient(to right, var(--gradient-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  @include main-text;
+  @include inline-padding;
+  margin-top: 28px;
+
+  &Icon {
+    color: var(--color-gold);
+  }
+}
