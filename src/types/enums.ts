@@ -2,6 +2,7 @@ export const enum InputTypes {
   TEXT = 'text',
   EMAIL = 'email',
   PASSWORD = 'password',
+  NUMBER = 'number',
 }
 
 export const enum ButtonTypes {

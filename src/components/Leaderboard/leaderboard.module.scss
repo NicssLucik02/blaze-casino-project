@@ -1,5 +1,5 @@
-@import '../../styles/mixins/fonts';
-@import '../../styles/mixins/media';
+@use '../../styles/mixins/fonts' as fonts;
+@use '../../styles/mixins/media' as media;
 
 .leaderboard {
   width: 300px;
@@ -8,7 +8,7 @@
   background-color: var(--color-dark-violet);
   max-height: 840px;
 
-  @include tablet {
+  @include media.tablet {
     width: 100%;
     flex: 2;
   }
@@ -30,12 +30,12 @@
   }
 
   &Title {
-    @include h1-satoshi(24px);
+    @include fonts.h1-satoshi(24px);
   }
 
   &Subtitle {
     color: var(--color-grey);
-    @include main-text;
+    @include fonts.main-text;
   }
 
   &CupIcon {

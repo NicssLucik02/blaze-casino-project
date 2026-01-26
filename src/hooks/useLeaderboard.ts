@@ -7,9 +7,6 @@ import { QUERY_KEYS } from '@/config/constants';
 import { LeaderboardPeriod } from '@/types/leaderboard';
 
 export const useLeaderboard = (period: LeaderboardPeriod) => {
-  const token = tokenStorage.getAccessToken();
-  const isEnabled = !!token;
-
   return useQuery({
     queryKey: [...QUERY_KEYS.LEADERBOARD, period],
     queryFn: async () => {
@@ -17,10 +14,9 @@ export const useLeaderboard = (period: LeaderboardPeriod) => {
       if (!token) {
         throw new Error('No access token');
       }
-      const result = await leaderboardApi.getLeaderboard(period, token);
-      return result;
+      return leaderboardApi.getLeaderboard(period, token);
     },
-    enabled: isEnabled,
+    enabled: typeof window !== 'undefined',
     staleTime: 1000 * 60,
     refetchInterval: 1000 * 60,
     retry: 1,

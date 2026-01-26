@@ -1,6 +1,6 @@
-@import '../../styles/mixins/fonts';
-@import '../../styles/mixins/mixins';
-@import '../../styles/mixins/media';
+@use '../../styles/mixins/fonts' as fonts;
+@use '../../styles/mixins/mixins' as mixins;
+@use '../../styles/mixins/media' as media;
 
 .burgerButton {
   display: none;
@@ -10,7 +10,7 @@
   padding: 8px;
   z-index: 6;
 
-  @include tablet {
+  @include media.tablet {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,10 +74,10 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    @include h1-satoshi(24px);
+    @include fonts.h1-satoshi(24px);
 
     svg {
-      @include drop-shadow-blur(rgba(255, 63, 122, 0.6), 12px);
+      @include mixins.drop-shadow-blur(rgba(255, 63, 122, 0.6), 12px);
     }
   }
 
@@ -97,7 +97,7 @@
     border-radius: 8px;
     transition: background 0.2s ease;
     cursor: pointer;
-    @include main-text;
+    @include fonts.main-text;
 
     &:hover {
       background: rgba(255, 255, 255, 0.1);

@@ -1,5 +1,5 @@
-@import '../../styles/mixins/mixins';
-@import '../../styles/mixins/media';
+@use '../../styles/mixins/mixins' as mixins;
+@use '../../styles/mixins/media' as media;
 
 .header {
   position: sticky;
@@ -10,10 +10,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @include inline-padding;
+  @include mixins.inline-padding;
   z-index: 5;
 
-  @include tablet {
+  @include media.tablet {
     background: none;
   }
 }

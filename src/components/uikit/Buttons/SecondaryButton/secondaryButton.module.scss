@@ -1,20 +1,20 @@
-@import '../../../../styles//mixins/mixins';
+@use '../../../../styles/mixins/mixins' as mixins;
 
 .secondaryButton {
   height: 46px;
   border-radius: 16px;
   font-size: 16px;
   font-weight: 600;
-  gap: 4px;
   background: linear-gradient(to bottom, var(--gradient-accent));
   color: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.5s ease;
+  position: relative;
 
   &:hover {
-    @include shadow-blur(var(--secondary-button-hover), 18px);
+    @include mixins.shadow-blur(var(--secondary-button-hover), 18px);
   }
 
   &:active {
@@ -25,10 +25,16 @@
     background: linear-gradient(to bottom, var(--secondary-button-disabled));
     cursor: not-allowed;
   }
+}
 
-  &Icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.dispFlex {
+  display: flex;
+  align-items: center;
+}
+
+.dispPosition {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
 }

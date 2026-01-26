@@ -1,4 +1,4 @@
-@import '../../../../styles//mixins/mixins';
+@use '../../../../styles/mixins/mixins' as mixins;
 
 .primaryButton {
   height: 46px;
@@ -14,7 +14,7 @@
   transition: all 0.5s ease;
 
   &:hover {
-    @include shadow-blur(var(--primary-button-hover), 18px);
+    @include mixins.shadow-blur(var(--primary-button-hover), 18px);
   }
 
   &:active {

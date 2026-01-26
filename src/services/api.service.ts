@@ -1,19 +1,16 @@
 import { API_CONFIG, LOGGER_CONFIG } from '@/config/constants';
+import { tokenStorage } from './token.service';
 
 class ApiService {
   private readonly baseURL: string;
+  private isRefreshing = false;
+  private refreshSubscribers: ((token: string) => void)[] = [];
 
   constructor(baseURL: string) {
     this.baseURL = baseURL;
   }
 
-  private log(message: string, data?: any): void {
-    if (LOGGER_CONFIG.ENABLED) {
-      console.log(message, data || '');
-    }
-  }
-
-  private logError(message: string, error: any): void {
+  private logError(message: string, error: unknown): void {
     if (LOGGER_CONFIG.ENABLED) {
       console.error(message, error);
     }
@@ -27,14 +24,53 @@ class ApiService {
     };
   }
 
+  private async refreshAccessToken(): Promise<string> {
+    const refreshToken = tokenStorage.getRefreshToken();
+
+    if (!refreshToken) {
+      throw new Error('No refresh token available');
+    }
+
+    const response = await fetch(
+      `${this.baseURL}${API_CONFIG.ENDPOINTS.AUTH.REFRESH}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': API_CONFIG.HEADERS.CONTENT_TYPE,
+        },
+        body: JSON.stringify({ refreshToken }),
+      }
+    );
+
+    if (!response.ok) {
+      tokenStorage.clearAll();
+      window.location.href = '/login';
+      throw new Error('Refresh token expired');
+    }
+
+    const data = await response.json();
+
+    tokenStorage.setAccessToken(data.accessToken);
+    tokenStorage.setRefreshToken(data.refreshToken);
+
+    return data.accessToken;
+  }
+
+  private onAccessTokenRefreshed(callback: (token: string) => void): void {
+    this.refreshSubscribers.push(callback);
+  }
+
+  private notifySubscribers(token: string): void {
+    this.refreshSubscribers.forEach(callback => callback(token));
+    this.refreshSubscribers = [];
+  }
+
   private async request<T>(
     endpoint: string,
     options?: RequestInit,
     accessToken?: string
   ): Promise<T> {
     const url = `${this.baseURL}${endpoint}`;
-
-    this.log('API Request:', url);
 
     const config: RequestInit = {
       ...options,
@@ -47,6 +83,35 @@ class ApiService {
 
     try {
       const response = await fetch(url, config);
+
+      if (response.status === 401) {
+        console.warn('🔑 Access token expired, attempting refresh...');
+
+        if (this.isRefreshing) {
+          return new Promise((resolve, reject) => {
+            this.onAccessTokenRefreshed(newToken => {
+              this.request<T>(endpoint, options, newToken)
+                .then(resolve)
+                .catch(reject);
+            });
+          });
+        }
+
+        this.isRefreshing = true;
+
+        try {
+          const newAccessToken = await this.refreshAccessToken();
+          this.isRefreshing = false;
+
+          this.notifySubscribers(newAccessToken);
+
+          return this.request<T>(endpoint, options, newAccessToken);
+        } catch (refreshError) {
+          this.isRefreshing = false;
+          this.logError('Failed to refresh token:', refreshError);
+          throw new Error('Session expired. Please login again.');
+        }
+      }
 
       if (!response.ok) {
         const error = await response.json().catch(() => ({}));

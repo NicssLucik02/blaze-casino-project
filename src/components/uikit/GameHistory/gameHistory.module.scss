@@ -1,0 +1,98 @@
+@use '../../../styles/mixins/fonts' as fonts;
+@use '../../../styles/mixins/mixins' as mixins;
+@use '../../../styles/mixins/media' as media;
+
+.gameHistory {
+  width: 100%;
+  height: 290px;
+  @include mixins.inline-padding;
+  margin-top: 40px;
+
+  &Title {
+    @include fonts.h1-satoshi;
+    margin-bottom: 16px;
+  }
+
+  &TableWrapper {
+    @include media.tablet {
+      overflow-x: auto;
+    }
+  }
+
+  &Table {
+    width: 100%;
+    border: 1px solid rgba(173, 181, 189, 0.2);
+    border-radius: 16px;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    @include media.tablet {
+      min-width: 700px;
+    }
+
+    &Head {
+      display: block;
+      background-color: rgba(173, 181, 189, 0.2);
+      border-radius: 16px 16px 0 0;
+
+      &Row {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+      }
+
+      &Desc {
+        @include fonts.secondary-text;
+        color: var(--color-grey);
+        text-align: left;
+        padding: 12px 32px;
+        border: none;
+
+        &:first-child {
+          border-radius: 16px 0 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 16px 0 0;
+        }
+      }
+    }
+
+    &Body {
+      display: block;
+      overflow-y: auto;
+      max-height: 230px;
+
+      &Row {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+
+        &:hover {
+          background-color: var(--color-card);
+        }
+      }
+
+      &Desc {
+        padding: 12px 32px;
+        @include fonts.main-text;
+      }
+    }
+  }
+}
+
+.win {
+  color: var(--color-green-success);
+}
+
+.lost {
+  color: var(--color-red-error);
+}
+
+.loaderWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 290px;
+  width: 100%;
+}

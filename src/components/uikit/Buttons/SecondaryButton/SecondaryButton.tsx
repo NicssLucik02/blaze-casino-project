@@ -7,23 +7,23 @@ type SecondaryButtonProps = {
   amount?: number;
   content: string;
   icon?: React.ReactNode;
-  widthSize: string;
+  widthSize?: string;
   handler: (
     event: React.MouseEvent<HTMLButtonElement>,
     amount?: number
   ) => void;
   disabled?: boolean;
-  isActive?: boolean;
+  disp: 'flex' | 'position';
 };
 
 export const SecondaryButton: React.FC<SecondaryButtonProps> = ({
   amount,
   content,
   icon,
-  widthSize,
+  widthSize = '100%',
   handler,
   disabled,
-  isActive,
+  disp,
 }) => {
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => handler(event, amount),
@@ -33,17 +33,24 @@ export const SecondaryButton: React.FC<SecondaryButtonProps> = ({
     <button
       disabled={disabled}
       onClick={handleClick}
-      className={classNames(
-        styles['secondaryButton'],
-
-        { [styles['active']]: isActive }
-      )}
+      className={styles['secondaryButton']}
       style={{
         width: `${widthSize}`,
       }}
     >
       {content || amount}
-      {icon && <span className={styles['secondaryButtonIcon']}>{icon}</span>}
+      {icon && (
+        <span
+          className={classNames(
+            styles['secondaryButtonIcon'],
+
+            { [styles['dispFlex']]: disp === 'flex' },
+            { [styles['dispPosition']]: disp === 'position' }
+          )}
+        >
+          {icon}
+        </span>
+      )}
     </button>
   );
 };

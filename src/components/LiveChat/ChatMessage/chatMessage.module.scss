@@ -1,5 +1,5 @@
-@import '../../../styles/mixins/fonts';
-@import '../../../styles/mixins/mixins';
+@use '../../../styles/mixins/fonts' as fonts;
+@use '../../../styles/mixins/mixins' as mixins;
 
 .chatMessage {
   width: 100%;
@@ -43,11 +43,11 @@
       width: 37px;
       height: 26px;
       border-radius: 100px;
-      @include secondary-text;
+      @include fonts.secondary-text;
     }
 
     &Name {
-      @include h2-inter(16px);
+      @include fonts.h2-inter(16px);
     }
 
     &Info {
@@ -57,13 +57,13 @@
     }
 
     &Time {
-      @include secondary-text;
+      @include fonts.secondary-text;
       color: var(--color-grey);
     }
   }
 
   &Body {
-    @include main-text;
+    @include fonts.main-text;
     padding-top: 8px;
     color: var(--color-grey);
     word-wrap: break-word;

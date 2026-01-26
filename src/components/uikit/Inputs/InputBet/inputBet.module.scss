@@ -1,0 +1,40 @@
+@use '../../../../styles/mixins/fonts' as fonts;
+
+.inputBet {
+  flex: 1;
+  width: 40%;
+  height: 44px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-white);
+  @include fonts.main-text;
+
+  &Wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  &Desc {
+    @include fonts.secondary-text;
+    color: var(--color-grey);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &Container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 44px;
+    border-radius: 8px;
+    background-color: var(--color-purple2);
+    padding-inline: 10px;
+  }
+
+  &Icon {
+    margin-right: 10px;
+  }
+}

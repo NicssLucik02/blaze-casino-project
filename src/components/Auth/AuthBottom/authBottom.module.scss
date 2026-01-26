@@ -1,4 +1,4 @@
-@import '../../../styles/mixins//fonts';
+@use '../../../styles/mixins/fonts' as fonts;
 
 .authBottom {
   display: flex;
@@ -9,7 +9,7 @@
   width: 100%;
 
   &Link {
-    @include secondary-text;
+    @include fonts.secondary-text;
     text-decoration: none;
     color: var(--color-light-blue);
 
@@ -25,7 +25,7 @@
   }
 
   &Text {
-    @include small-text;
+    @include fonts.small-text;
     color: var(--color-grey);
   }
 }

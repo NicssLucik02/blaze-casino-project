@@ -3,7 +3,7 @@ import styles from './primaryButton.module.scss';
 
 type PrimaryButtonProps = {
   content: string;
-  widthSize: string;
+  widthSize?: string;
   handler?: () => void;
   disabled?: boolean;
   icon?: React.ReactNode;
@@ -12,7 +12,7 @@ type PrimaryButtonProps = {
 
 export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   content,
-  widthSize,
+  widthSize = '100%',
   handler,
   disabled,
   icon,

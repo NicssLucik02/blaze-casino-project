@@ -1,6 +1,6 @@
-@import '../../styles/mixins/mixins';
-@import '../../styles/mixins/fonts';
-@import '../../styles/mixins/media';
+@use '../../styles/mixins/mixins' as mixins;
+@use '../../styles/mixins/fonts' as fonts;
+@use '../../styles/mixins/media' as media;
 
 .wrapper {
   width: 100%;
@@ -26,11 +26,11 @@
     padding: 40px;
     gap: 30px;
 
-    @include mobile-large {
+    @include media.mobile-large {
       padding: 32px;
     }
 
-    @include mobile {
+    @include media.mobile {
       padding: 24px;
     }
   }
@@ -50,14 +50,14 @@
       height: 64px;
       border-radius: 12px;
       background: linear-gradient(to top, var(--gradient-coral));
-      @include shadow-blur(var(--color-coral-pink), 16px, 2px);
-      @include mobile-large {
+      @include mixins.shadow-blur(var(--color-coral-pink), 16px, 2px);
+      @include media.mobile-large {
         width: 48px;
         height: 48px;
       }
 
       &Icon {
-        @include mobile-large {
+        @include media.mobile-large {
           width: 24px;
           height: 24px;
         }
@@ -73,12 +73,12 @@
     }
 
     &Title {
-      @include h1-satoshi;
+      @include fonts.h1-satoshi;
       color: var(--color-white);
     }
 
     &Subtitle {
-      @include h2-inter(24px);
+      @include fonts.h2-inter(24px);
       color: var(--color-grey);
     }
   }
@@ -97,7 +97,7 @@
     }
 
     &InputTitle {
-      @include secondary-text;
+      @include fonts.secondary-text;
       color: var(--color-grey);
     }
 

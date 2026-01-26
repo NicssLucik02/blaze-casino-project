@@ -9,6 +9,9 @@ export const API_CONFIG = {
       REFRESH: '/auth/refresh',
       LOGOUT: '/auth/logout',
     },
+    LEADERBOARD: {
+      GET: '/leaderboard',
+    },
   },
   HEADERS: {
     CONTENT_TYPE: 'application/json',
@@ -73,6 +76,7 @@ export const FORM_CONFIG = {
 
 export const QUERY_KEYS = {
   USER: ['user'] as const,
+  LEADERBOARD: ['leaderboard'] as const,
 } as const;
 
 export const LOGGER_CONFIG = {

@@ -7,6 +7,8 @@
   --color-dark-blue: rgba(16, 15, 34, 1);
   --color-dark-blue2: rgba(36, 36, 63, 1);
   --color-dark-blue3: rgba(15, 12, 41, 1);
+  --color-dark-blue4: rgba(48, 44, 85, 1);
+  --color-dark-blue5: rgba(29, 25, 58, 1);
   --color-purple: rgba(127, 118, 205, 1);
   --color-purple2: rgba(124, 124, 232, 0.33);
   --color-violet: rgba(136, 123, 255, 1);
@@ -83,4 +85,10 @@ input:-webkit-autofill:focus {
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

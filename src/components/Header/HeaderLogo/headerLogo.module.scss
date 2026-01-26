@@ -1,17 +1,18 @@
-@import '../../../styles/mixins/fonts';
-@import '../../../styles/mixins/mixins';
+@use '../../../styles/mixins/fonts' as fonts;
+@use '../../../styles/mixins/mixins' as mixins;
+@use '../../../styles/mixins/media' as media;
 
 .headerLogo {
   display: flex;
   align-items: center;
   gap: 8px;
-  @include h1-satoshi(24px);
+  @include fonts.h1-satoshi(24px);
 
-  @include tablet {
+  @include media.tablet {
     display: none;
   }
 
   &Icon {
-    @include drop-shadow-blur(rgba(255, 63, 122, 0.6), 12px);
+    @include mixins.drop-shadow-blur(rgba(255, 63, 122, 0.6), 12px);
   }
 }

@@ -1,5 +1,5 @@
-@import '../../styles/mixins/mixins';
-@import '../../styles/mixins/media';
+@use '../../styles/mixins/mixins' as mixins;
+@use '../../styles/mixins/media' as media;
 
 .dashboard {
   padding: 40px 0;
@@ -7,25 +7,25 @@
   height: 100%;
   overflow: visible;
 
-  @include tablet {
+  @include media.tablet {
     padding: 24px 0;
   }
 
   &Container {
-    @include inline-padding;
+    @include mixins.inline-padding;
     display: flex;
     gap: 93px;
     overflow: visible;
 
-    @include desktop {
+    @include media.desktop {
       gap: 50px;
     }
 
-    @include laptop {
+    @include media.laptop {
       gap: 20px;
     }
 
-    @include tablet {
+    @include media.tablet {
       flex-direction: column;
       gap: 40px;
     }
